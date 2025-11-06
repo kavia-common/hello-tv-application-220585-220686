@@ -5,13 +5,12 @@
   "type": "module",
   "packageManager": "npm@10.9.0",
   "scripts": {
-    "dev": "node ./node_modules/vite/bin/vite.js",
-    "build": "node ./node_modules/vite/bin/vite.js build",
+    "prepare": "node ./scripts/vite-guard.js || (echo \"Vite 5 required. Reinstall deps.\" && exit 1)",
+    "dev": "node ./scripts/vite-guard.js && node ./node_modules/vite/bin/vite.js --host 0.0.0.0 --port 3000",
+    "build": "node ./scripts/vite-guard.js && node ./node_modules/vite/bin/vite.js build",
+    "preview": "node ./scripts/vite-guard.js && node ./node_modules/vite/bin/vite.js preview --host 0.0.0.0 --port 3000",
     "lint": "eslint .",
-    "preview": "node ./node_modules/vite/bin/vite.js preview",
-    "build:tizen": "node ./node_modules/vite/bin/vite.js build",
-    "package:tizen": "cd dist && zip -r ../app.wgt * ../config.xml",
-    "preinstall": "node -e \"const fs=require('fs');['package-lock.json','node_modules'].forEach(p=>{try{fs.rmSync(p,{recursive:true,force:true})}catch(e){}})\""
+    "package:tizen": "cd dist && zip -r ../app.wgt * ../config.xml"
   },
   "dependencies": {
     "react": "^19.1.1",
@@ -26,16 +25,21 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
     "globals": "^16.4.0",
-    "vite": "npm:vite@5.4.10"
+    "vite": "5.4.10"
   },
   "overrides": {
+    "vite": "5.4.10",
+    "@vitejs/plugin-react": "4.3.4",
+    "vite@*": "5.4.10",
+    "@vitejs/*": "*",
+    "rollup": "^4.0.0",
+    "esbuild": "^0.21.5"
+  },
+  "resolutions": {
     "vite": "5.4.10",
     "@vitejs/plugin-react": "4.3.4"
   },
   "engines": {
     "node": ">=18.0.0"
-  },
-  "scriptsExtra": {
-    "postinstall-note": "If builds still report Vite 7, clear node_modules and run npm ci."
   }
 }

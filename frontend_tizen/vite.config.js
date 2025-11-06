@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import htmlHashShim from './vite.html-hash-shim.js'
 
-// Vite configuration compatible with Node 18 and Vite 5
-// Rollup settings are left to Vite defaults; a local rollup.config.mjs exists as a shim for stability.
+// PUBLIC_INTERFACE
+// Vite config for Tizen TV app compatible with Node 18 and Vite 5.x.
+// Uses only Node-18-safe APIs and avoids custom hashing or Node 20-only code paths.
 export default defineConfig({
-  plugins: [htmlHashShim(), react()],
+  plugins: [react()],
 })
