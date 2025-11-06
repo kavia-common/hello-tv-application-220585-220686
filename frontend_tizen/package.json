@@ -5,9 +5,9 @@
   "type": "module",
   "packageManager": "npm@10.9.0",
   "scripts": {
-    "dev": "node ./scripts/vite-guard.js && npx vite",
-    "build": "node ./scripts/vite-guard.js && npx vite build",
-    "preview": "node ./scripts/vite-guard.js && npx vite preview",
+    "dev": "node ./scripts/vite-guard.js && node ./node_modules/vite/bin/vite.js",
+    "build": "node ./scripts/vite-guard.js && node ./node_modules/vite/bin/vite.js build",
+    "preview": "node ./scripts/vite-guard.js && node ./node_modules/vite/bin/vite.js preview",
     "lint": "eslint .",
     "package:tizen": "cd dist && zip -r ../app.wgt * ../config.xml"
   },
@@ -32,7 +32,6 @@
     "vite@^6": "5.4.10",
     "vite@^7": "5.4.10",
     "@vitejs/plugin-react": "4.3.4",
-    "@vitejs/*": "*",
     "rollup": "4.24.0",
     "esbuild": "0.21.5"
   }

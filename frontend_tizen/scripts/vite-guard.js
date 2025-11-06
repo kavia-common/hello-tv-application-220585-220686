@@ -2,8 +2,9 @@
 /**
  * PUBLIC_INTERFACE
  * Ensures the locally installed Vite is Node 18–compatible (5.x).
- * Warns (non-blocking) if vite major version is not 5 to avoid halting CI/dev startup,
- * but still surfaces potential incompatibility.
+ * During development this guard is non-blocking and will never prevent `npm run dev`.
+ * It only warns if vite major version is not 5 so developers can do a clean install.
+ * Recommended: run a clean install to fail-fast during installation if needed.
  */
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
