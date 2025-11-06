@@ -5,9 +5,9 @@
   "type": "module",
   "packageManager": "npm@10.9.0",
   "scripts": {
-    "dev": "node ./scripts/vite-guard.js && node ./node_modules/vite/bin/vite.js --host 0.0.0.0 --port 3000",
-    "build": "node ./scripts/vite-guard.js && node ./node_modules/vite/bin/vite.js build",
-    "preview": "node ./scripts/vite-guard.js && node ./node_modules/vite/bin/vite.js preview --host 0.0.0.0 --port 3000",
+    "dev": "node ./scripts/vite-guard.js && npx vite",
+    "build": "node ./scripts/vite-guard.js && npx vite build",
+    "preview": "node ./scripts/vite-guard.js && npx vite preview",
     "lint": "eslint .",
     "package:tizen": "cd dist && zip -r ../app.wgt * ../config.xml"
   },
