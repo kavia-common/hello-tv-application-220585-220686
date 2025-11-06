@@ -3,13 +3,15 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "packageManager": "npm@10.9.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node ./node_modules/vite/bin/vite.js",
+    "build": "node ./node_modules/vite/bin/vite.js build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "build:tizen": "vite build",
-    "package:tizen": "cd dist && zip -r ../app.wgt * ../config.xml"
+    "preview": "node ./node_modules/vite/bin/vite.js preview",
+    "build:tizen": "node ./node_modules/vite/bin/vite.js build",
+    "package:tizen": "cd dist && zip -r ../app.wgt * ../config.xml",
+    "preinstall": "node -e \"const fs=require('fs');['package-lock.json','node_modules'].forEach(p=>{try{fs.rmSync(p,{recursive:true,force:true})}catch(e){}})\""
   },
   "dependencies": {
     "react": "^19.1.1",
@@ -19,11 +21,21 @@
     "@eslint/js": "^9.36.0",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react": "^5.0.4",
+    "@vitejs/plugin-react": "4.3.4",
     "eslint": "^9.36.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
     "globals": "^16.4.0",
-    "vite": "^7.1.7"
+    "vite": "npm:vite@5.4.10"
+  },
+  "overrides": {
+    "vite": "5.4.10",
+    "@vitejs/plugin-react": "4.3.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scriptsExtra": {
+    "postinstall-note": "If builds still report Vite 7, clear node_modules and run npm ci."
   }
 }

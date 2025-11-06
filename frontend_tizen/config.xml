@@ -4,6 +4,7 @@
   <feature name="http://tizen.org/feature/screen.size.all"/>
   <icon src="icon.png"/>
   <content src="index.html"/>
-  <name>myTizenApp</name>
+  <name>Hello TV</name>
   <tizen:profile name="tizen"/>
+  <tizen:setting screen-orientation="landscape" context-menu="disable" background-support="disable" encryption="disable"/>
 </widget>

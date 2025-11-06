@@ -1,45 +1,122 @@
+/* Ocean Professional Theme Variables */
+:root {
+  --color-primary: #2563EB;   /* Blue */
+  --color-secondary: #F59E0B; /* Amber */
+  --color-success: #F59E0B;
+  --color-error: #EF4444;
+  --color-bg: #f9fafb;        /* Light background */
+  --color-surface: #ffffff;   /* White card */
+  --color-text: #111827;      /* Gray-900 */
+  --shadow-soft: 0 10px 25px rgba(17, 24, 39, 0.08);
+  --radius-lg: 20px;
+}
+
+/* TV container matching Tizen viewport */
 .tv-app {
   width: 1920px;
   height: 1080px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #000;
-  color: #fff;
+  background:
+    radial-gradient(60% 80% at 20% 20%, rgba(37, 99, 235, 0.10), rgba(249, 250, 251, 0) 60%),
+    radial-gradient(60% 80% at 80% 80%, rgba(37, 99, 235, 0.08), rgba(249, 250, 251, 0) 60%),
+    linear-gradient(180deg, #ffffff 0%, var(--color-bg) 100%);
+  color: var(--color-text);
+  overflow: hidden;
+  animation: fadeIn 700ms ease-out both;
 }
 
-h1 {
-  font-size: 72px;
-  margin-bottom: 60px;
-}
-
-.content {
+/* Centered card-like surface */
+.op-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 64px 96px;
   text-align: center;
+  min-width: 960px;
+  border: 1px solid rgba(17, 24, 39, 0.06);
+  transform: translateZ(0); /* hint GPU for smoothness */
 }
 
-button {
-  font-size: 32px;
-  padding: 20px 60px;
-  border-radius: 10px;
-  border: 3px solid #666;
-  background: #222;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.2s;
+/* Decorative top accent bar */
+.op-card::before {
+  content: "";
+  display: block;
+  width: 160px;
+  height: 6px;
+  margin: 0 auto 28px auto;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
 }
 
-button:hover,
-button:focus {
-  border-color: #00aaff;
-  background: #00aaff;
-  color: #000;
-  transform: scale(1.1);
-  outline: none;
+/* Main heading "Hello TV" */
+.op-title {
+  font-family: 'Samsung Sharp Sans', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 92px;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+  color: var(--color-text);
 }
 
-p {
-  margin-top: 30px;
+/* Subtext / accent line */
+.op-subtitle {
+  font-size: 28px;
+  color: #374151; /* gray-700 */
+  margin: 0 0 36px 0;
+}
+
+/* Subtle pill accent */
+.op-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.07);
+  color: var(--color-primary);
   font-size: 24px;
-  color: #888;
+  font-weight: 600;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.op-pill-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+}
+
+/* Remote focus friendly focus-ring */
+:focus-visible {
+  outline: 4px solid rgba(37, 99, 235, 0.7);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* Helper for visually hidden text for screen readers */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
+
+/* Enter key hint */
+.op-hint {
+  font-size: 22px;
+  color: #6b7280; /* gray-500 */
+  margin-top: 30px;
+}
+
+/* Appear animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.985); }
+  to   { opacity: 1; transform: scale(1); }
 }
